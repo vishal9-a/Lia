@@ -1,0 +1,19 @@
+# Proguard rules for Lia AI
+
+-keep class org.json.** { *; }
+-keepclassmembers class * implements java.io.Serializable { *; }
+
+# Keep model classes and enums
+-keep class com.Lia.assistant.data.** { *; }
+-keep class com.Lia.assistant.voice.** { *; }
+-keep class com.Lia.assistant.forge.** { *; }
+
+# Keep OkHttp internals used for WebSockets
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Keep Three.js bridge
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
